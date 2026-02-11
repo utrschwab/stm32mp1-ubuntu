@@ -28,7 +28,7 @@ build_uboot() {
     make ARCH=arm CROSS_COMPILE=${CC} distclean
 	#make ARCH=arm CROSS_COMPILE=${CC} stm32mp15_basic_defconfig # non trusted u-boot
     make ARCH=arm CROSS_COMPILE=${CC} stm32mp15_trusted_defconfig
-	make ARCH=arm CROSS_COMPILE=${CC} DEVICE_TREE=${board} all u-boot.stm32 -j${CORES}
+	make ARCH=arm CROSS_COMPILE=${CC} DEVICE_TREE=stm32mp15xx-dhcor-avenger96 all u-boot.stm32 -j${CORES}
 	
 	echo "============================================"
 	if [ -f  u-boot.bin ]; then
@@ -117,7 +117,7 @@ for option in ${OPTIONS}; do
     stm32mp157a-sodimm2-mx) board=${OPTIONS} ;;
     stm32mp157c-dk2) board=${OPTIONS} ;;
     stm32mp153c-dhcom-drc02) board=${OPTIONS} ;;
-    stm32mp15xx-dhcor-avenger96) board=${OPTIONS} ;;
+    stm32mp157a-avenger96) board=${OPTIONS} ;;
     stm32mp157a-ev1) board=${OPTIONS} ;;
     stm32mp157a-iot-box) board=${OPTIONS} ;;
     stm32mp157a-stinger96) board=${OPTIONS} ;;
@@ -135,7 +135,7 @@ for option in ${OPTIONS}; do
     stm32mp157a-dk1) board=${OPTIONS} ;;
     stm32mp157a-ed1) board=${OPTIONS} ;;
 
-    *) board="stm32mp15xx-dhcor-avenger96" ;;
+    *) board="stm32mp157a-avenger96" ;;
     esac
 done
 
