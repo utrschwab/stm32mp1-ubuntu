@@ -135,7 +135,7 @@ for option in ${OPTIONS}; do
     stm32mp157a-dk1) board=${OPTIONS} ;;
     stm32mp157a-ed1) board=${OPTIONS} ;;
 
-    *) board="stm32mp157c-dk2" ;;
+    *) board="stm32mp157c-avenger96" ;;
     esac
 done
 
