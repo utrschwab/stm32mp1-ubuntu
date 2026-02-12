@@ -74,8 +74,8 @@ clean_loop() {
 write_uboot() {
     echo "============================================"
     echo "Install U-Boot bootloader version ${UBOOT_VERSION}:"
-    if [ -f ${DIR}/deploy/fip.bin ]; then
-    #if [ -f ${DIR}/deploy/u-boot.img ]; then
+    #if [ -f ${DIR}/deploy/fip.bin ]; then
+    if [ -f ${DIR}/deploy/u-boot.img ]; then
         sudo dd if=${DIR}/deploy/u-boot-spl.stm32 of=${LOOP_DEVICE}p1
         sudo dd if=${DIR}/deploy/u-boot-spl.stm32 of=${LOOP_DEVICE}p2
         sudo dd if=${DIR}/deploy/u-boot.img of=${LOOP_DEVICE}p3
