@@ -38,11 +38,10 @@ build_uboot() {
 
 	    echo "Copy U-Boot to deploy folder"
        # non trusted u-boot
-	    #if [ -f ${DIR}/deploy/u-boot-spl.stm32 ]; then rm ${DIR}/deploy/u-boot-spl.stm32; fi
-	    #if [ -f ${DIR}/deploy/u-boot.img ]; then rm ${DIR}/deploy/u-boot.img; fi
-        #if [ -f ${DIR}/deploy/u-boot.bin ]; then rm ${DIR}/deploy/u-boot.bin; fi
-	    #cp -v u-boot-spl.stm32 ${DIR}/deploy
-
+	    if [ -f ${DIR}/deploy/u-boot-spl.stm32 ]; then rm ${DIR}/deploy/u-boot-spl.stm32; fi
+	    if [ -f ${DIR}/deploy/u-boot.img ]; then rm ${DIR}/deploy/u-boot.img; fi
+        if [ -f ${DIR}/deploy/u-boot.bin ]; then rm ${DIR}/deploy/u-boot.bin; fi
+	    cp -v u-boot-spl.stm32 ${DIR}/deploy
 	    cp -v u-boot.img ${DIR}/deploy
 	else
         export ERROR_MSG="U-Boot: Build Failure: board ${board}"
@@ -142,7 +141,7 @@ done
 
 build_uboot
 
-build_arm_trusted_firmware
+#build_arm_trusted_firmware
 
 echo ""
 echo "-----------------------------"
