@@ -5,9 +5,9 @@ Boards:
 
   * [DHCOR STM32MP1 Avenger96](https://wiki.dh-electronics.com/index.php/Avenger96)
 
-bases on 
-https://forum.digikey.com/t/debian-getting-started-with-the-stm32mp157/12459
-and
+bases on<br>
+https://forum.digikey.com/t/debian-getting-started-with-the-stm32mp157/12459 <br>
+and<br>
 https://github.com/cvetaevvitaliy/stm32mp1-ubuntu
 
 ## Basic Requirements
