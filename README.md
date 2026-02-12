@@ -5,6 +5,11 @@ Boards:
 
   * [DHCOR STM32MP1 Avenger96](https://wiki.dh-electronics.com/index.php/Avenger96)
 
+bases on 
+https://forum.digikey.com/t/debian-getting-started-with-the-stm32mp157/12459
+and
+https://github.com/cvetaevvitaliy/stm32mp1-ubuntu
+
 ## Basic Requirements
 Running a recent supported release of Debian, Fedora or Ubuntu on a x86 64bit based PC; without OS Virtualization Software. <br>
 Many of the listed commands assume `/bin/bash` as the default shell. <br> 
