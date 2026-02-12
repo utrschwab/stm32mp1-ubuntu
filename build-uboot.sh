@@ -26,9 +26,9 @@ build_uboot() {
     echo "Board: ${board}"
 
     make ARCH=arm CROSS_COMPILE=${CC} distclean
-	#make ARCH=arm CROSS_COMPILE=${CC} stm32mp15_basic_defconfig # non trusted u-boot
-    make ARCH=arm CROSS_COMPILE=${CC} stm32mp15_trusted_defconfig
-	make ARCH=arm CROSS_COMPILE=${CC} DEVICE_TREE=stm32mp15xx-dhcor-avenger96 all u-boot.stm32 -j${CORES}
+	make ARCH=arm CROSS_COMPILE=${CC} stm32mp15_basic_defconfig # non trusted u-boot
+    #make ARCH=arm CROSS_COMPILE=${CC} stm32mp15_trusted_defconfig
+	make ARCH=arm CROSS_COMPILE=${CC} DEVICE_TREE=${board} all u-boot.stm32 -j${CORES}
 	
 	echo "============================================"
 	if [ -f  u-boot.bin ]; then
@@ -43,7 +43,7 @@ build_uboot() {
         #if [ -f ${DIR}/deploy/u-boot.bin ]; then rm ${DIR}/deploy/u-boot.bin; fi
 	    #cp -v u-boot-spl.stm32 ${DIR}/deploy
 
-	    cp -v u-boot.bin ${DIR}/deploy
+	    cp -v u-boot.img ${DIR}/deploy
 	else
         export ERROR_MSG="U-Boot: Build Failure: board ${board}"
 		/bin/sh -e "${DIR}/error.sh" && { exit 1 ; }
@@ -142,7 +142,7 @@ done
 
 build_uboot
 
-build_arm_trusted_firmware
+#build_arm_trusted_firmware
 
 echo ""
 echo "-----------------------------"
