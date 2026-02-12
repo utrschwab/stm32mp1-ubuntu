@@ -93,135 +93,19 @@ Download:  <br>
 
 ```bash
 #user@localhost:~$
-git clone -b v2020.10-stm32mp https://github.com/STMicroelectronics/u-boot
+git clone -b v2023.10-stm32mp https://github.com/STMicroelectronics/u-boot
 cd u-boot
 ```
 
 Configure and Build: <br>
 
-**stm32mp157a-sodimm2-mx**
+**DHCOR STM32MP1 Avenger96**
 ```bash
 #user@localhost:~/u-boot$
 make ARCH=arm CROSS_COMPILE=${CC} distclean
-make ARCH=arm CROSS_COMPILE=${CC} stm32mp15_trusted_defconfig
-make ARCH=arm CROSS_COMPILE=${CC} DEVICE_TREE=stm32mp157a-sodimm2-mx all
+make ARCH=arm CROSS_COMPILE=${CC} stm32mp15_basic_defconfig
+make ARCH=arm CROSS_COMPILE=${CC} DEVICE_TREE=stm32mp15xx-dhcor-avenger96 all
 ```
-
-**stm32mp157c-ev1**
-```bash
-#user@localhost:~/u-boot$
-make ARCH=arm CROSS_COMPILE=${CC} distclean
-make ARCH=arm CROSS_COMPILE=${CC} stm32mp15_trusted_defconfig
-make ARCH=arm CROSS_COMPILE=${CC} DEVICE_TREE=stm32mp157c-ev1 all
-```
-
-**stm32mp157c-ed1**
-```bash
-#user@localhost:~/u-boot$
-make ARCH=arm CROSS_COMPILE=${CC} distclean
-make ARCH=arm CROSS_COMPILE=${CC} stm32mp15_trusted_defconfig
-make ARCH=arm CROSS_COMPILE=${CC} DEVICE_TREE=stm32mp157c-ed1 all
-```
-
-**stm32mp157a-dk1**
-```bash
-#user@localhost:~/u-boot$
-make ARCH=arm CROSS_COMPILE=${CC} distclean
-make ARCH=arm CROSS_COMPILE=${CC} stm32mp15_trusted_defconfig
-make ARCH=arm CROSS_COMPILE=${CC} DEVICE_TREE=stm32mp157a-dk1 all
-```
-
-**stm32mp157c-dk2**
-```bash
-#user@localhost:~/u-boot$
-make ARCH=arm CROSS_COMPILE=${CC} distclean
-make ARCH=arm CROSS_COMPILE=${CC} stm32mp15_trusted_defconfig
-make ARCH=arm CROSS_COMPILE=${CC} DEVICE_TREE=stm32mp157c-dk2 all
-```
-
-# arm-trusted-firmware
-
-```bash
-cd ..
-git clone -b v2.4-stm32mp https://github.com/STMicroelectronics/arm-trusted-firmware
-cd arm-trusted-firmware
-```
-
-**stm32mp157a-sodimm2-mx**
-```bash
-make CROSS_COMPILE=${CC} \
-			PLAT=stm32mp1 \
-      ARCH=aarch32 \
-      ARM_ARCH_MAJOR=7 \
-      STM32MP_SDMMC=1 \
-      STM32MP_EMMC=1 \
-      AARCH32_SP=sp_min \
-      DTB_FILE_NAME=stm32mp157a-sodimm2-mx.dtb \
-      BL33_CFG=../u-boot/u-boot.dtb \
-      BL33=../u-boot/u-boot-nodtb.bin \
-      all fip
-```
-
-**stm32mp157c-ev1**
-```bash
-make CROSS_COMPILE=${CC} \
-			PLAT=stm32mp1 \
-      ARCH=aarch32 \
-      ARM_ARCH_MAJOR=7 \
-      STM32MP_SDMMC=1 \
-      STM32MP_EMMC=1 \
-      AARCH32_SP=sp_min \
-      DTB_FILE_NAME=stm32mp157c-ev1.dtb \
-      BL33_CFG=../u-boot/u-boot.dtb \
-      BL33=../u-boot/u-boot-nodtb.bin \
-      all fip
-```
-
-**stm32mp157c-ed1**
-```bash
-make CROSS_COMPILE=${CC} \
-			PLAT=stm32mp1 \
-      ARCH=aarch32 \
-      ARM_ARCH_MAJOR=7 \
-      STM32MP_SDMMC=1 \
-      STM32MP_EMMC=1 \
-      AARCH32_SP=sp_min \
-      DTB_FILE_NAME=stm32mp157c-ed1.dtb \
-      BL33_CFG=../u-boot/u-boot.dtb \
-      BL33=../u-boot/u-boot-nodtb.bin \
-      all fip
-```
-
-**stm32mp157a-dk1**
-```bash
-make CROSS_COMPILE=${CC} \
-			PLAT=stm32mp1 \
-      ARCH=aarch32 \
-      ARM_ARCH_MAJOR=7 \
-      STM32MP_SDMMC=1 \
-      STM32MP_EMMC=1 \
-      AARCH32_SP=sp_min \
-      DTB_FILE_NAME=stm32mp157a-dk1.dtb \
-      BL33_CFG=../u-boot/u-boot.dtb \
-      BL33=../u-boot/u-boot-nodtb.bin \
-      all fip
-```
-
-**stm32mp157c-dk2**
-```bash
-make CROSS_COMPILE=${CC} \
-			PLAT=stm32mp1 \
-      ARCH=aarch32 \
-      ARM_ARCH_MAJOR=7 \
-      STM32MP_SDMMC=1 \
-      STM32MP_EMMC=1 \
-      AARCH32_SP=sp_min \
-      DTB_FILE_NAME=stm32mp157c-dk2.dtb \
-      BL33_CFG=../u-boot/u-boot.dtb \
-      BL33=../u-boot/u-boot-nodtb.bin \
-      all fip
-```
-
 
 ## Linux Kernel
 This script will build the kernel, modules, device tree binaries and copy them to the deploy directory.
@@ -323,7 +207,7 @@ dd if=/dev/zero of=${DIR}/deploy/${IMAGE_FILENAME} bs=4096M count=2
 sgdisk --resize-table=128 -a 1 \
             -n 1:34:545    -c 1:fsbl1   \
             -n 2:546:1057  -c 2:fsbl2   \
-            -n 3:1058:5153 -c 3:fip    \
+            -n 3:1058:5153 -c 3:ssbl    \
             -n 4:5154:     -c 4:rootfs  \
             -p ./deploy/${IMAGE_FILENAME}
             
@@ -373,46 +257,13 @@ brw-rw---- 1 root disk 259, 10 лис  7 13:31 /dev/loop0p4
 
 **Install U-Boot bootloader:**
 
-**stm32mp157a-sodimm2-mx**
+**DHCOR STM32MP1 Avenger96**
 ```bash
 #user@localhost:~$
-sudo dd if=./arm-trusted-firmware/build/stm32mp1/release/tf-a-stm32mp157a-sodimm2-mx.stm32 of=${LOOP_DEVICE}p1
-sudo dd if=./arm-trusted-firmware/build/stm32mp1/release/tf-a-stm32mp157a-sodimm2-mx.stm32 of=${LOOP_DEVICE}p2
-sudo dd if=./arm-trusted-firmware/build/stm32mp1/release/fip.bin of=${LOOP_DEVICE}p3
+sudo dd if=./u-boot/u-boot-spl.stm32 of=${LOOP_DEVICE}p1
+sudo dd if=./u-boot/u-boot-spl.stm32 of=${LOOP_DEVICE}p2
+sudo dd if=./u-boot/u-boot.img of=${LOOP_DEVICE}p3
 ```
-
-**stm32mp157c-ev1**
-```bash
-#user@localhost:~$
-sudo dd if=./arm-trusted-firmware/build/stm32mp1/release/tf-a-stm32mp157c-ev1.stm32 of=${LOOP_DEVICE}p1
-sudo dd if=./arm-trusted-firmware/build/stm32mp1/release/tf-a-stm32mp157c-ev1.stm32 of=${LOOP_DEVICE}p2
-sudo dd if=./arm-trusted-firmware/build/stm32mp1/release/fip.bin of=${LOOP_DEVICE}p3
-```
-
-**stm32mp157c-ed1**
-```bash
-#user@localhost:~$
-sudo dd if=./arm-trusted-firmware/build/stm32mp1/release/tf-a-stm32mp157c-ed1.stm32 of=${LOOP_DEVICE}p1
-sudo dd if=./arm-trusted-firmware/build/stm32mp1/release/tf-a-stm32mp157c-ed1.stm32 of=${LOOP_DEVICE}p2
-sudo dd if=./arm-trusted-firmware/build/stm32mp1/release/fip.bin of=${LOOP_DEVICE}p3
-```
-
-**stm32mp157a-dk1**
-```bash
-#user@localhost:~$
-sudo dd if=./arm-trusted-firmware/build/stm32mp1/release/tf-a-stm32mp157a-dk1.stm32 of=${LOOP_DEVICE}p1
-sudo dd if=./arm-trusted-firmware/build/stm32mp1/release/tf-a-stm32mp157a-dk1.stm32 of=${LOOP_DEVICE}p2
-sudo dd if=./arm-trusted-firmware/build/stm32mp1/release/fip.bin of=${LOOP_DEVICE}p3
-```
-
-**stm32mp157c-dk2**
-```bash
-#user@localhost:~$
-sudo dd if=./arm-trusted-firmware/build/stm32mp1/release/tf-a-stm32mp157c-dk2.stm32 of=${LOOP_DEVICE}p1
-sudo dd if=./arm-trusted-firmware/build/stm32mp1/release/tf-a-stm32mp157c-dk2.stm32 of=${LOOP_DEVICE}p2
-sudo dd if=./arm-trusted-firmware/build/stm32mp1/release/fip.bin of=${LOOP_DEVICE}p3
-```
-
 
 
 **Format RootFS Partition:**
