@@ -1,9 +1,9 @@
-# Ubuntu 22.04 for STM32MP15x avenger96
+# Ubuntu 22.04 for DHCOR STM32MP1 Avenger96
 This repo for build Ubuntu/Debian on stm32mp1xx CPU <br> 
 Availability
 Boards:
 
-  * [DHCOR STM32MP1](https://wiki.dh-electronics.com/index.php/Avenger96)
+  * [DHCOR STM32MP1 Avenger96](https://wiki.dh-electronics.com/index.php/Avenger96)
 
 ## Basic Requirements
 Running a recent supported release of Debian, Fedora or Ubuntu on a x86 64bit based PC; without OS Virtualization Software. <br>
