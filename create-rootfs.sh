@@ -20,7 +20,7 @@ init_image(){
         sgdisk --resize-table=128 -a 1 \
             -n 1:34:545    -c 1:fsbl1   \
             -n 2:546:1057  -c 2:fsbl2   \
-            -n 3:1058:5153 -c 3:fip    \
+            -n 3:1058:5153 -c 3:ssbl    \
             -n 4:5154:     -c 4:rootfs  \
             -p ${DIR}/deploy/${IMAGE_FILENAME}
     
@@ -81,7 +81,7 @@ write_uboot() {
         # sudo dd if=${DIR}/deploy/u-boot.img of=${LOOP_DEVICE}p3
         sudo dd if=${DIR}/deploy/tf-a-${board}.stm32 of=${LOOP_DEVICE}p1
         sudo dd if=${DIR}/deploy/tf-a-${board}.stm32 of=${LOOP_DEVICE}p2
-        sudo dd if=${DIR}/deploy/fip.bin of=${LOOP_DEVICE}p3
+        sudo dd if=${DIR}/deploy/uboot.bin of=${LOOP_DEVICE}p3
     else
         echo "Error, Uboot not found"
         clean_loop
