@@ -142,7 +142,7 @@ done
 
 build_uboot
 
-#build_arm_trusted_firmware
+build_arm_trusted_firmware
 
 echo ""
 echo "-----------------------------"
