@@ -1,13 +1,9 @@
-# Ubuntu 18.04, 20.04, 22.04 Debian 10, 11 for stm32mp1
+# Ubuntu 22.04 for STM32MP15x avenger96
 This repo for build Ubuntu/Debian on stm32mp1xx CPU <br> 
 Availability
 Boards:
 
-  * [EV-STM32MP157-SODIMM](http://otladka.com.ua/index.php?option=com_virtuemart&page=shop.product_details&flypage=vmj_naru.tpl&category_id=41&product_id=284&Itemid=71)
-  * [Discovery kit with STM32MP157D MPU 88 at Digi-Key](https://www.digikey.com/en/products/detail/stmicroelectronics/STM32MP157D-DK1/13536964)
-  * [Discovery kit with STM32MP157F MPU 47 at Digi-Key](https://www.digikey.com/en/products/detail/stmicroelectronics/STM32MP157F-DK2/13536968)
-  * [Evaluation board with STM32MP157D MPU 43 at Digi-Key](https://www.digikey.com/en/products/detail/stmicroelectronics/STM32MP157D-EV1/13536967)
-  * [Evaluation board with STM32MP157F MPU 32 at Digi-Key](https://www.digikey.com/en/products/detail/stmicroelectronics/STM32MP157F-EV1/12395904)
+  * [DHCOR STM32MP1](https://wiki.dh-electronics.com/index.php/Avenger96)
 
 ## Basic Requirements
 Running a recent supported release of Debian, Fedora or Ubuntu on a x86 64bit based PC; without OS Virtualization Software. <br>
