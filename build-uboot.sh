@@ -26,7 +26,7 @@ build_uboot() {
     echo "Board: ${board}"
 
     make ARCH=arm CROSS_COMPILE=${CC} distclean
-	make ARCH=arm CROSS_COMPILE=${CC} stm32mp15_basic_defconfig # non trusted u-boot
+	make ARCH=arm CROSS_COMPILE=${CC} stm32mp15_dhcor_basic_defconfig # non trusted u-boot
     #make ARCH=arm CROSS_COMPILE=${CC} stm32mp15_trusted_defconfig
 	make ARCH=arm CROSS_COMPILE=${CC} DEVICE_TREE=${board} all u-boot.stm32 -j${CORES}
 	
