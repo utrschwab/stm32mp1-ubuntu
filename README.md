@@ -74,8 +74,8 @@ tar xf x86_64-gcc-10.3.0-nolibc-arm-linux-gnueabi.tar.gz
 export CC=`pwd`/gcc-10.3.0-nolibc/arm-linux-gnueabi/bin/arm-linux-gnueabi-
 
 wget -c https://mirrors.edge.kernel.org/pub/tools/crosstool/files/bin/x86_64/15.2.0/x86_64-gcc-15.2.0-nolibc-arm-linux-gnueabi.tar.gz
-ar -xf x86_64-gcc-15.2.0-nolibc-arm-linux-gnueabi.tar.gz
-xport CC32=`pwd`/gcc-15.2.0-nolibc/arm-linux-gnueabi/bin/arm-linux-gnueabi-
+tar -xf x86_64-gcc-15.2.0-nolibc-arm-linux-gnueabi.tar.gz
+export CC32=`pwd`/gcc-15.2.0-nolibc/arm-linux-gnueabi/bin/arm-linux-gnueabi-
 ```
 
 Test Cross Compiler:
