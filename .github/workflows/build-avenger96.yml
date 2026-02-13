@@ -23,7 +23,8 @@ jobs:
       - name: Get U-boot & AT-F
         working-directory: ./stm32mp1-ubuntu
         run: |
-          git submodule update --recursive --remote   u-boot
+          #git submodule update --recursive --remote   u-boot
+          git clone -b v2022.07_testbench https://github.com/dh-electronics/u-boot-stm32mp1.git
           git submodule update --recursive --remote   arm-trusted-firmware
 
       - name: Build U-boot and ARM trusted firmware
